@@ -19,6 +19,13 @@ const Header = () => {
                             <Link className="mx-2 text-decoration-none text-white nav-link" to="contact">Contact</Link>
                         </Nav>
                         <Nav>
+                          {
+                              user.email &&  <img style={{width:"40px",height:"40px"}} className="rounded-pill mt-2 me-2" src={user.photoURL} alt="" />
+                          }
+                        
+                           <p className="text-white mt-3">{user?.displayName}</p>
+                           
+                           
                          {
                              !user.email ? <Link className="mx-2 text-decoration-none text-white nav-link" to="/signin">
                              <button className="btn btn-secondary">Sign In</button>
