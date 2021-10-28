@@ -1,4 +1,5 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider,onAuthStateChanged,signOut } from "firebase/auth";
+import { useEffect } from "react";
 import { useState } from "react";
 import firebaseInitialize from "../Firebase/firebase.init";
 
@@ -28,11 +29,43 @@ const useFirebase = () => {
             // });
 
     }
+
+    //observe whether user auth state changed or not
+    useEffect(()=>{
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                setUser(user);
+                console.log("user from observer",user);
+              // ...
+            } else {
+                setUser({});
+            }
+          });
+          return ()=> unsubscribe;
+    },[])
+
+    //logout 
+       // sign out 
+       const logOut = () => {
+        signOut(auth)
+            .then(() => {
+                // setUser({});
+            }).catch((error) => {
+                // An error happened.
+                setError(error.message);
+            })
+            // .finally(() => {
+            //     setIsLoading(false);
+            // })
+    }
+
     return {
         user,
         setUser,
         error,
-        googleSignIn
+        setError,
+        googleSignIn,
+        logOut
 
     }
 }
