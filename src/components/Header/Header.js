@@ -17,7 +17,7 @@ const Header = () => {
                             <Link className="mx-2 text-decoration-none text-white nav-link" to="contact">Contact</Link>
                         </Nav>
                         <Nav>
-                            <Link className="mx-2 text-decoration-none text-white nav-link" to="/signIn">Sign In</Link>
+                            <Link className="mx-2 text-decoration-none text-white nav-link" to="/signin">Sign In</Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
