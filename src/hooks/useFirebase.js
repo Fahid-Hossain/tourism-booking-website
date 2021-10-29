@@ -9,6 +9,7 @@ const useFirebase = () => {
     //useStates
     const [user,setUser]=useState({});
     const [error,setError]=useState("");
+    const [isLoading,setIsLoading]=useState(true);
 
     //provider
     const googleProvider = new GoogleAuthProvider();
@@ -17,6 +18,7 @@ const useFirebase = () => {
 
     //googleSignIn
     const googleSignIn = () => {
+        setIsLoading(true);
        return signInWithPopup(auth, googleProvider)
             // .then((result) => {
             //     const user = result.user;
@@ -40,6 +42,7 @@ const useFirebase = () => {
             } else {
                 setUser({});
             }
+            setIsLoading(false);
           });
           return ()=> unsubscribe;
     },[])
@@ -47,6 +50,7 @@ const useFirebase = () => {
     //logout 
        // sign out 
        const logOut = () => {
+           setIsLoading(true);
         signOut(auth)
             .then(() => {
                 // setUser({});
@@ -54,9 +58,9 @@ const useFirebase = () => {
                 // An error happened.
                 setError(error.message);
             })
-            // .finally(() => {
-            //     setIsLoading(false);
-            // })
+            .finally(() => {
+                setIsLoading(false);
+            })
     }
 
     return {
@@ -65,7 +69,8 @@ const useFirebase = () => {
         error,
         setError,
         googleSignIn,
-        logOut
+        logOut,
+        isLoading
 
     }
 }

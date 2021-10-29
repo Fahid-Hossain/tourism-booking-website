@@ -17,7 +17,7 @@ const Booking = () => {
             .then(data => {
                 setTour(data);
             })
-    })
+    },[])
 
     // react hook form
     const { register, handleSubmit } = useForm();
