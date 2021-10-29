@@ -1,10 +1,10 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyBnp9koypVPu6o_sQRPUy0BljTCcUVvFj0",
-    authDomain: "travel-rhythm.firebaseapp.com",
-    projectId: "travel-rhythm",
-    storageBucket: "travel-rhythm.appspot.com",
-    messagingSenderId: "93831261632",
-    appId: "1:93831261632:web:32bec75b4fdaf6a8c42c25"
+    apiKey:process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain:process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId:process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket:process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId:process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId:process.env.REACT_APP_FIREBASE_APP_ID
   };
 
 export default firebaseConfig;
