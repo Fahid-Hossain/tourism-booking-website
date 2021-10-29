@@ -12,6 +12,9 @@ import NotFound from './components/NotFound/NotFound';
 import SignIn from './components/SignIn/SignIn';
 import AuthProvider from './context/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import AddTrip from './components/AddTrip/AddTrip';
+import ManageBooking from './components/ManageBooking/ManageBooking';
+import MyBooking from './components/MyBooking/MyBooking';
 // import Button from 'react-bootstrap/Button';
 
 
@@ -41,6 +44,15 @@ function App() {
             </Route>
             <Route path="/contact">
               <Contact></Contact>
+            </Route>
+            <Route path="/mybooking">
+              <MyBooking></MyBooking>
+            </Route>
+            <Route path="/managebooking">
+              <ManageBooking></ManageBooking>
+            </Route>
+            <Route path="/addtrip">
+              <AddTrip></AddTrip>
             </Route>
             <Route path="*">
               <NotFound></NotFound>
