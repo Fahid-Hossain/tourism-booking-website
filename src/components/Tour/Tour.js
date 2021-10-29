@@ -1,8 +1,9 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Tour = (props) => {
-    const {img,name,description}=props.tour;
+    const {img,name,description,_id}=props.tour;
     return (
         <div>
 
@@ -14,7 +15,9 @@ const Tour = (props) => {
                                 <Card.Text>
                                     {description}
                                 </Card.Text>
-                                <button className="btn btn-danger">Book now</button>
+                             <Link to={`/booking/${_id}`}>
+                             <button className="btn btn-danger">Book now</button>
+                             </Link>
                             </Card.Body>
                         </Card>
                     </Col>

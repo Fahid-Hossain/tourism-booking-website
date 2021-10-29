@@ -15,6 +15,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import AddTrip from './components/AddTrip/AddTrip';
 import ManageBooking from './components/ManageBooking/ManageBooking';
 import MyBooking from './components/MyBooking/MyBooking';
+import Booking from './components/Booking/Booking';
 // import Button from 'react-bootstrap/Button';
 
 
@@ -47,6 +48,9 @@ function App() {
             </Route>
             <Route path="/mybooking">
               <MyBooking></MyBooking>
+            </Route>
+            <Route path="/booking/:id">
+              <Booking></Booking>
             </Route>
             <Route path="/managebooking">
               <ManageBooking></ManageBooking>

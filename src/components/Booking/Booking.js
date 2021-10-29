@@ -1,9 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Card, Col, Row } from 'react-bootstrap';
+import { useParams } from 'react-router';
+import { useForm } from "react-hook-form";
+import "./Booking.css"
+import useAuth from '../../hooks/useAuth';
 
 const Booking = () => {
+    const { id } = useParams();
+    //
+    const {user}=useAuth();
+    //load single data
+    const [tour, setTour] = useState({})
+    useEffect(() => {
+        fetch(`http://localhost:5000/tours/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setTour(data);
+            })
+    })
+
+    // react hook form
+    const { register, handleSubmit } = useForm();
+    const onSubmit = data => console.log(data);
     return (
         <div>
-            <h1>Booking now</h1>
+            <Row xs={1} md={2} className="g-4">
+                <Col>
+                    <Card>
+                        <Card.Img variant="top" src={tour.img} />
+                        <Card.Body>
+                            <Card.Title>{tour.name}</Card.Title>
+                            <Card.Text>
+                                {tour.description}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+                <Col>
+                  <div className="booking-form">
+                      <h3 className="text-primary fw-bold pt-5">BOOKING RIGHT NOW</h3>
+                  <form onSubmit={handleSubmit(onSubmit)}>
+                        <input {...register("name")}  value={user.displayName || ""} />
+                        <input {...register("email")} value={user.email || ""} />
+                        <input {...register("city")} placeholder="city" />
+                        <input {...register("road")} placeholder="Road no" />
+                        <input {...register("phone")} placeholder="Phone no" />
+                        <input type="submit" value="Book now"/>
+                    </form>
+                  </div>
+                </Col>
+            </Row>
+
         </div>
     );
 };
