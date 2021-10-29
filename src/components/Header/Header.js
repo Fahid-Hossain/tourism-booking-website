@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 
@@ -8,7 +8,6 @@ const Header = () => {
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                {/* <Container> */}
                     <Navbar.Brand><h5 className="text-bold text-warning fs-4 ms-5">Travel Rhythm</h5></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -47,7 +46,6 @@ const Header = () => {
                          }
                         </Nav>
                     </Navbar.Collapse>
-                {/* </Container> */}
             </Navbar>
         </div>
     );

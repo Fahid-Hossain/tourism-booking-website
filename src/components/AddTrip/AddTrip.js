@@ -23,7 +23,7 @@ const AddTrip = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input placeholder="Destination" {...register("name", { required: true, maxLength: 20 })} />
                 <textarea placeholder="short description" {...register("description")} />
-                <input placeholder="price" type="number" {...register("age")} />
+                <input placeholder="price" type="number" {...register("price")} />
                 <input placeholder="img url" {...register("img")} />
                 <input type="submit" />
             </form>
