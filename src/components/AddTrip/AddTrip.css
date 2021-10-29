@@ -1,0 +1,12 @@
+.add-trip form{
+    display:flex;
+    flex-direction:column;
+    margin-top: 50px;
+    justify-content:center;
+    align-items:center;
+}
+.add-trip input,textarea {
+    width: 30%;
+    margin-bottom: 15px;
+
+}
