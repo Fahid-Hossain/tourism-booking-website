@@ -1,10 +1,22 @@
+import axios from 'axios';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import "./AddTrip.css"
 
 const AddTrip = () => {
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const { register, handleSubmit,reset } = useForm();
+    const onSubmit = data =>{
+        console.log(data);
+        //post api via axios
+        axios.post("http://localhost:5000/tours",data)
+        .then(res=>{
+            // console.log(res);
+            if(res.data.insertedId){
+                alert("Successfully added your tour trip .")
+                reset();
+            }
+        })
+    } 
     return (
         <div className="add-trip">
             <h1>Add a Trip You Like</h1>
