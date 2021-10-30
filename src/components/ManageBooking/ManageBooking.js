@@ -34,7 +34,7 @@ const ManageBooking = () => {
     }
     return (
         <div>
-            <h1>Manage All Bookings {tours.length}</h1>
+            <h1 className="my-5">MANAGE ALL BOOKINGS</h1>
             <Row xs={1} md={3} className="g-4">
                 {
                     tours.map(tour => <div>
@@ -47,7 +47,7 @@ const ManageBooking = () => {
                                     <Card.Text>
                                     {tour.description}
                                     </Card.Text>
-                                    <button onClick={()=>handleDelete(tour._id)} className="btn btn-danger">Delete</button>
+                                    <button onClick={()=>handleDelete(tour._id)} className="btn btn-danger">Cancel Booking</button>
                                 </Card.Body>
                             </Card>
                         </Col>

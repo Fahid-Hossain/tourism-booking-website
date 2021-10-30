@@ -23,7 +23,7 @@ const MyBooking = () => {
             })
             .then(res => res.json())
             .then(data=>{
-                console.log(data);
+                // console.log(data);
                 if(data.deletedCount){
                     alert("Deleted Successfully")
                     const remaining = bookings.filter(booking => booking._id !== id);
@@ -45,9 +45,9 @@ const MyBooking = () => {
                                 <Card.ImgOverlay>
                                     <Card.Title className="mt-5 pt-5">{booking.mybookings.name}</Card.Title>
                                     <Card.Text>
-                                        {booking.mybookings.description}
+                                        ${booking.mybookings.price}
                                     </Card.Text>
-                                    <button onClick={()=>handleDelete(booking._id)} className="btn btn-primary">Delete</button>
+                                    <button onClick={()=>handleDelete(booking._id)} className="btn btn-danger">Cancel Booking</button>
                                 </Card.ImgOverlay>
                             </Card>
                         </Col>

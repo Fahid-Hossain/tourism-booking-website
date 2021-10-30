@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Header from './components/Header/Header';
-import About from './components/About/About';
+// import About from './components/About/About';
 import Tours from './components/Tours/Tours';
 import Contact from './components/Contact/Contact';
 // import Footer from './components/Footer/Footer';
@@ -16,6 +16,8 @@ import AddTrip from './components/AddTrip/AddTrip';
 import ManageBooking from './components/ManageBooking/ManageBooking';
 import MyBooking from './components/MyBooking/MyBooking';
 import Booking from './components/Booking/Booking';
+import About from './components/Home/About';
+import Footer from './components/Footer/Footer';
 // import Button from 'react-bootstrap/Button';
 
 
@@ -62,6 +64,9 @@ function App() {
               <NotFound></NotFound>
             </Route>
           </Switch>
+          <Route>
+            <Footer></Footer>
+          </Route>
         </BrowserRouter>
       </AuthProvider>
     </div>

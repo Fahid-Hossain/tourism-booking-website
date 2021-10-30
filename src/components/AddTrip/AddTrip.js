@@ -19,7 +19,7 @@ const AddTrip = () => {
     } 
     return (
         <div className="add-trip">
-            <h1>Add a Trip You Like</h1>
+            <h1 className="my-5 fw-bold">ADD A TRIP YOU MAY LIKE</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input placeholder="Destination" {...register("name", { required: true, maxLength: 20 })} />
                 <textarea placeholder="short description" {...register("description")} />
