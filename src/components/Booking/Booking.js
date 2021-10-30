@@ -15,7 +15,7 @@ const Booking = () => {
     const {img,name,description} =tour;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/tours/${id}`)
+        fetch(`https://still-badlands-16158.herokuapp.com/tours/${id}`)
             .then(res => res.json())
             .then(data => {
                 setTour(data);
@@ -28,7 +28,7 @@ const Booking = () => {
         // console.log(data);
         data.mybookings =tour;
 
-        fetch("http://localhost:5000/mybooking",{
+        fetch("https://still-badlands-16158.herokuapp.com/mybooking",{
             method: "POST",
             headers: {
                 "content-type": "application/json"

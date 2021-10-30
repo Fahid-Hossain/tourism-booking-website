@@ -4,7 +4,7 @@ import { Card, Row,Col } from 'react-bootstrap';
 const MyBooking = () => {
     const [bookings, setBookings] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/mybooking")
+        fetch("https://still-badlands-16158.herokuapp.com/mybooking")
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -17,7 +17,7 @@ const MyBooking = () => {
      const handleDelete=(id)=>{
         const proceed = window.confirm('Are you sure you want to delete?');
         if(proceed){
-            const url = `http://localhost:5000/mybooking/${id}`;
+            const url = `https://still-badlands-16158.herokuapp.com/mybooking/${id}`;
             fetch(url,{
                 method: 'DELETE'
             })
@@ -25,7 +25,7 @@ const MyBooking = () => {
             .then(data=>{
                 // console.log(data);
                 if(data.deletedCount){
-                    alert("Deleted Successfully")
+                    alert("Successfully Canceled")
                     const remaining = bookings.filter(booking => booking._id !== id);
                     setBookings(remaining);
                 }

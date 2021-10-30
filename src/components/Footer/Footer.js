@@ -47,6 +47,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
+            <footer className="bg-dark text-white py-3 text-muted"> &copy; All right reserved by travel-Rhythm Agency_2021</footer>
         </div>
     );
 };
