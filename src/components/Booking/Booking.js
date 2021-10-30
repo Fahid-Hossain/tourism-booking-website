@@ -11,6 +11,9 @@ const Booking = () => {
     const {user}=useAuth();
     //load single data
     const [tour, setTour] = useState({})
+    //
+    const {img,name,description} =tour;
+
     useEffect(() => {
         fetch(`http://localhost:5000/tours/${id}`)
             .then(res => res.json())
@@ -21,17 +24,36 @@ const Booking = () => {
 
     // react hook form
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data =>{
+        // console.log(data);
+        data.mybookings =tour;
+
+        fetch("http://localhost:5000/mybooking",{
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(data),
+        })
+        .then(res => res.json())
+        .then(result=>{
+            console.log(result);
+            if(result.insertedId){
+                alert("Your booking successfully Done")
+            }
+        })
+
+    };
     return (
         <div>
             <Row xs={1} md={2} className="g-4">
                 <Col>
                     <Card>
-                        <Card.Img variant="top" src={tour.img} />
+                        <Card.Img variant="top" src={img} />
                         <Card.Body>
-                            <Card.Title>{tour.name}</Card.Title>
+                            <Card.Title>{name}</Card.Title>
                             <Card.Text>
-                                {tour.description}
+                                {description}
                             </Card.Text>
                         </Card.Body>
                     </Card>
