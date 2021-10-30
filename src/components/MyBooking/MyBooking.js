@@ -12,6 +12,27 @@ const MyBooking = () => {
             })
         console.log(bookings);
     }, [])
+
+     //handle Delete
+     const handleDelete=(id)=>{
+        const proceed = window.confirm('Are you sure you want to delete?');
+        if(proceed){
+            const url = `http://localhost:5000/mybooking/${id}`;
+            fetch(url,{
+                method: 'DELETE'
+            })
+            .then(res => res.json())
+            .then(data=>{
+                console.log(data);
+                if(data.deletedCount){
+                    alert("Deleted Successfully")
+                    const remaining = bookings.filter(booking => booking._id !== id);
+                    setBookings(remaining);
+                }
+            })
+        }
+    }
+
     return (
         <div>
             <h1>My Bookings {bookings.length}</h1>
@@ -26,7 +47,7 @@ const MyBooking = () => {
                                     <Card.Text>
                                         {booking.mybookings.description}
                                     </Card.Text>
-                                    <button className="btn btn-primary">Delete</button>
+                                    <button onClick={()=>handleDelete(booking._id)} className="btn btn-primary">Delete</button>
                                 </Card.ImgOverlay>
                             </Card>
                         </Col>
