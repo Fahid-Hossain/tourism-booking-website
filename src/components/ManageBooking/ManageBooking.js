@@ -32,6 +32,7 @@ const ManageBooking = () => {
             })
         }
     }
+
     return (
         <div>
             <h1 className="my-5">MANAGE ALL BOOKINGS</h1>
@@ -47,10 +48,9 @@ const ManageBooking = () => {
                             <Card.Img className="mx-auto p-2" variant="top" src={tour.img} style={{width:"150px"}} />
                             <Card.Body>
                                 <Card.Title>{tour.name}</Card.Title>
-                                <Card.Text>
-                                {tour.description}
-                                </Card.Text>
+                                <p className="fs-4 fw-bold text-muted"> ${tour.price}</p>
                                 <button onClick={()=>handleDelete(tour._id)} className="btn btn-danger">Cancel Booking</button>
+                                {/* <button onClick={()=>handleUpdate(tour._id)} className="btn btn-primary ms-2">Approve Booking</button> */}
                             </Card.Body>
                         </Card>
                     </Col>

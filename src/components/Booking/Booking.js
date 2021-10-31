@@ -27,6 +27,7 @@ const Booking = () => {
     const onSubmit = data =>{
         // console.log(data);
         data.mybookings =tour;
+        // data.status = "Pending";
 
         fetch("https://still-badlands-16158.herokuapp.com/mybooking",{
             method: "POST",

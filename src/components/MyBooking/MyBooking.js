@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Row,Col } from 'react-bootstrap';
+import { Card, Row,Col, Spinner } from 'react-bootstrap';
 
 const MyBooking = () => {
     const [bookings, setBookings] = useState([])
@@ -32,14 +32,13 @@ const MyBooking = () => {
             })
         }
     }
-    
+
     return (
         <div className="mt-3">
             <h1>ALL OF MY BOOKINGS ({bookings.length}) </h1>
             {
-                bookings.length === 0 ? <div className="spinner-border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div> :           <Row xs={1} md={3} className="g-4">
+                bookings.length === 0 ?<h4 className="text-warning">We can't found Any booking Yet <Spinner animation="grow" /></h4>
+            :           <Row xs={1} md={3} className="g-4">
                 {
                     bookings.map(booking => <div key={booking._id}>
                         <Col>
@@ -51,6 +50,7 @@ const MyBooking = () => {
                                         ${booking.mybookings.price}
                                     </Card.Text>
                                     <button onClick={()=>handleDelete(booking._id)} className="btn btn-danger">Cancel Booking</button>
+                                    {/* <button className="btn btn-primary ms-2 ">{booking.status}</button> */}
                                 </Card.ImgOverlay>
                             </Card>
                         </Col>
