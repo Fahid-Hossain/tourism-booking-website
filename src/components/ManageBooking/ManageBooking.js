@@ -1,67 +1,67 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
-const ManageBooking = () => {
-    const [tours, setTours] = useState([]);
+import React, { useEffect, useState } from 'react';
+import { Card, Row, Col, Spinner } from 'react-bootstrap';
+
+const MyBooking = () => {
+    const [bookings, setBookings] = useState([])
     useEffect(() => {
-        fetch("https://still-badlands-16158.herokuapp.com/tours")
+        fetch("http://localhost:5000/mybooking")
             .then(res => res.json())
             .then(data => {
-                setTours(data);
+                // console.log(data);
+                setBookings(data);
             })
+        console.log(bookings);
     }, [])
 
-    
     //handle Delete
-    const handleDelete=(id)=>{
-        const proceed = window.confirm('Are you sure you want to Cancel?');
-        if(proceed){
-            const url = `https://still-badlands-16158.herokuapp.com/tours/${id}`;
-            fetch(url,{
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure you want to delete?');
+        if (proceed) {
+            const url = `http://localhost:5000/mybooking/${id}`;
+            fetch(url, {
                 method: 'DELETE'
             })
-            .then(res => res.json())
-            .then(data=>{
-                // console.log(data);
-                if(data.deletedCount){
-                    alert("Successfully Canceled")
-                    const remaining = tours.filter(tour => tour._id !== id);
-                    setTours(remaining);
-                }
-            })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    if (data.deletedCount) {
+                        alert("Successfully Canceled")
+                        const remaining = bookings.filter(booking => booking._id !== id);
+                        setBookings(remaining);
+                    }
+                })
         }
     }
 
     return (
-        <div>
-            <h1 className="my-5">MANAGE ALL BOOKINGS</h1>
-        {
-            tours.length===0 ? <div className="spinner-border text-primary" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </div>  :  <Row xs={1} md={3} className="g-4">
+        <div className="mt-3">
+            <h1 className="text-secondary">TOTAL BOOKINGS ({bookings.length})</h1>
             {
-                tours.map(tour => <div key={tour._id}>
+                bookings.length === 0 ? <Spinner animation="border" variant="secondary"/>
+                    : <Row xs={1} md={3} className="g-4">
+                        {
+                            bookings.map(booking => <div key={booking._id}>
+                                <Col>
+                                    <Card className="bg-white text-white fw-bold fs-4">
+                                        <Card.Img src={booking.mybookings.img} alt="Card image" />
+                                        <Card.ImgOverlay>
+                                            <Card.Title className="mt-5 pt-5">{booking.mybookings.name}</Card.Title>
+                                            <p>By {booking.name}</p>
+                                            <Card.Text>
+                                                ${booking.mybookings.price}
+                                            </Card.Text>
+                                            <button onClick={() => handleDelete(booking._id)} className="btn btn-danger">Cancel Booking</button>
+                                            {/* <button className="btn btn-primary ms-2 ">{booking.status}</button> */}
+                                        </Card.ImgOverlay>
+                                    </Card>
+                                </Col>
 
-                    <Col>
-                        <Card>
-                            <Card.Img className="mx-auto p-2" variant="top" src={tour.img} style={{width:"150px"}} />
-                            <Card.Body>
-                                <Card.Title>{tour.name}</Card.Title>
-                                <p className="fs-4 fw-bold text-muted"> ${tour.price}</p>
-                                <button onClick={()=>handleDelete(tour._id)} className="btn btn-danger">Cancel Booking</button>
-                                {/* <button onClick={()=>handleUpdate(tour._id)} className="btn btn-primary ms-2">Approve Booking</button> */}
-                            </Card.Body>
-                        </Card>
-                    </Col>
-        
-        
-                </div>)
+                            </div>)
+                        }
+                    </Row>
             }
-        </Row>
-        }
         </div>
     );
 };
 
-export default ManageBooking;
+export default MyBooking;

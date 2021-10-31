@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Row,Col, Spinner } from 'react-bootstrap';
+import { Card, Col, Row, Spinner } from 'react-bootstrap';
+import useAuth from '../../hooks/useAuth';
 
-const MyBooking = () => {
+const ManageBooking = () => {
+    const { user } = useAuth();
     const [bookings, setBookings] = useState([])
     useEffect(() => {
-        fetch("https://still-badlands-16158.herokuapp.com/mybooking")
+        fetch("http://localhost:5000/mybooking")
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
                 setBookings(data);
             })
-        console.log(bookings);
     }, [])
+    const mybooking = bookings.filter(td => td.email === user.email);
+    // console.log(mybooking);
 
-     //handle Delete
-     const handleDelete=(id)=>{
+    //handle Delete booking
+    const handleDelete =(id)=>{
         const proceed = window.confirm('Are you sure you want to delete?');
         if(proceed){
-            const url = `https://still-badlands-16158.herokuapp.com/mybooking/${id}`;
+            const url = `http://localhost:5000/mybooking/${id}`;
             fetch(url,{
                 method: 'DELETE'
             })
@@ -32,35 +35,32 @@ const MyBooking = () => {
             })
         }
     }
-
     return (
-        <div className="mt-3">
-            <h1>ALL OF MY BOOKINGS ({bookings.length}) </h1>
-            {
-                bookings.length === 0 ?<h4 className="text-warning">We can't found Any booking Yet <Spinner animation="grow" /></h4>
-            :           <Row xs={1} md={3} className="g-4">
-                {
-                    bookings.map(booking => <div key={booking._id}>
-                        <Col>
-                            <Card className="bg-white text-white fw-bold fs-4">
-                                <Card.Img src={booking.mybookings.img} alt="Card image" />
-                                <Card.ImgOverlay>
-                                    <Card.Title className="mt-5 pt-5">{booking.mybookings.name}</Card.Title>
-                                    <Card.Text>
-                                        ${booking.mybookings.price}
-                                    </Card.Text>
-                                    <button onClick={()=>handleDelete(booking._id)} className="btn btn-danger">Cancel Booking</button>
-                                    {/* <button className="btn btn-primary ms-2 ">{booking.status}</button> */}
-                                </Card.ImgOverlay>
-                            </Card>
-                        </Col>
+        <div>
+        <h1 className="my-5 text-secondary">ALL OF MY BOOKINGS ({bookings.length}) </h1>
+      {
+          bookings.length === 0 ? <h4 className="text-muted">Did't find any bookings Yet !   <Spinner animation="grow" variant="secondary" /></h4> : <Row xs={1} md={3} className="g-4">
+          {
+              mybooking.map(booking => <Col key={booking._id}>
+                  <Card className="bg-dark text-white">
+                      <Card.Img src={booking?.mybookings?.img} alt="Card image" />
+                      <Card.ImgOverlay>
+                          <Card.Title className="mt-5 pt-5 fw-bold">{booking?.mybookings?.name}</Card.Title>
+                          <p className="fs-3 fw-bold text-danger">
+                         ${booking?.mybookings?.price}
+                          </p>
+                          <button onClick={()=>handleDelete(booking._id)} className="btn btn-warning text-danger fw-bold">Cancel Booking</button>
+                      </Card.ImgOverlay>
+                  </Card>
+              </Col>
 
-                    </div>)
-                }
-            </Row>
-            }
+              )
+          }
+      </Row>
+      }
+
         </div>
     );
 };
 
-export default MyBooking;
+export default ManageBooking;

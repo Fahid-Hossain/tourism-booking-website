@@ -8,7 +8,7 @@ const AddTrip = () => {
     const onSubmit = data =>{
         console.log(data);
         //post api via axios
-        axios.post("https://still-badlands-16158.herokuapp.com/tours",data)
+        axios.post("http://localhost:5000/tours",data)
         .then(res=>{
             // console.log(res);
             if(res.data.insertedId){
