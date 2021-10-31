@@ -1,8 +1,23 @@
-# Getting Started with Create React App
+# Travel Rhythm >> A travel Agency for travel lover
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project live link: https://travel-rhythm.web.app/ 
 
-## Available Scripts
+## What service provide this website?
+* Tour Booking in different destinations
+* Manage Booking 
+* Add Trip user may like
+
+## What we use this website ?
+* Html 5
+* Bootstrap css
+* React js
+* Firebase Authentication
+* Mongodb Atlas for database
+* Express js server
+* Context api
+* Environment Variables for security of firebase configuration
+* Firebase Deploy Client site
+* Heroku Deploy Server site
 
 In the project directory, you can run:
 
