@@ -32,13 +32,16 @@ const MyBooking = () => {
             })
         }
     }
-
+    
     return (
-        <div>
-            <h1>My Bookings {bookings.length}</h1>
-            <Row xs={1} md={3} className="g-4">
+        <div className="mt-3">
+            <h1>ALL OF MY BOOKINGS ({bookings.length}) </h1>
+            {
+                bookings.length === 0 ? <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </div> :           <Row xs={1} md={3} className="g-4">
                 {
-                    bookings.map(booking => <div>
+                    bookings.map(booking => <div key={booking._id}>
                         <Col>
                             <Card className="bg-white text-white fw-bold fs-4">
                                 <Card.Img src={booking.mybookings.img} alt="Card image" />
@@ -55,6 +58,7 @@ const MyBooking = () => {
                     </div>)
                 }
             </Row>
+            }
         </div>
     );
 };

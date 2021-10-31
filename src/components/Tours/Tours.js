@@ -16,11 +16,15 @@ const Tours = () => {
                   <hr className="featurette-divider" />
                 <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                   <hr className="featurette-divider" />
-            <Row xs={1} md={3} className="g-4">
-            {
-                tours.map(tour => <Tour tour={tour} key={tour._id}></Tour>)
-            }
-              </Row>
+      {
+          tours.length === 0 ? <div className="spinner-border text-danger" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div> : <Row xs={1} md={3} className="g-4">
+          {
+              tours.map(tour => <Tour tour={tour} key={tour._id}></Tour>)
+          }
+            </Row>
+      }
         </div>
     );
 };
