@@ -6,7 +6,7 @@ const ManageBooking = () => {
     const { user } = useAuth();
     const [bookings, setBookings] = useState([])
     useEffect(() => {
-        fetch("http://localhost:5000/mybooking")
+        fetch("https://still-badlands-16158.herokuapp.com/mybooking")
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -20,7 +20,7 @@ const ManageBooking = () => {
     const handleDelete =(id)=>{
         const proceed = window.confirm('Are you sure you want to delete?');
         if(proceed){
-            const url = `http://localhost:5000/mybooking/${id}`;
+            const url = `https://still-badlands-16158.herokuapp.com/mybooking/${id}`;
             fetch(url,{
                 method: 'DELETE'
             })
