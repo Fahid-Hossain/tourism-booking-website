@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, Row, Col, Spinner } from 'react-bootstrap';
 
 const MyBooking = () => {
@@ -55,6 +55,7 @@ const MyBooking = () => {
             .then(data => {
                 console.log(data);
                 // setDisabled(true);
+                alert("Your booking successfully Approved.Check in mybooking Option.")
             })
     }
 
@@ -76,7 +77,7 @@ const MyBooking = () => {
                                                 ${booking.mybookings.price}
                                             </Card.Text>
                                             <button onClick={() => handleDelete(booking._id)} className="btn btn-danger">Cancel Booking</button>
-                                            <button onClick={() => handleUpdate(booking._id)} className="btn btn-primary ms-2 " >Approve</button>
+                                            <button onClick={()=>handleUpdate(booking._id)} className="btn btn-primary ms-2">Approve</button>
                                         </Card.ImgOverlay>
                                     </Card>
                                 </Col>

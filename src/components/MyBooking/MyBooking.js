@@ -39,7 +39,8 @@ const ManageBooking = () => {
         <div>
         <h1 className="my-5 text-secondary">ALL OF MY BOOKINGS </h1>
       {
-          bookings.length === 0 ? <h4 className="text-muted">Did't find any bookings Yet !   <Spinner animation="grow" variant="secondary" /></h4> : <Row xs={1} md={3} className="g-4">
+          mybooking?.length === 0 ? <h4 className="text-muted">Did't find any bookings Yet !   <Spinner animation="grow" variant="secondary" /></h4>
+           : <Row xs={1} md={3} className="g-4">
           {
               mybooking.map(booking => <Col key={booking._id}>
                   <Card className="bg-dark text-white">
