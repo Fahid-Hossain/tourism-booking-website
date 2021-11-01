@@ -71,7 +71,7 @@ const MyBooking = () => {
                                     <Card className="bg-white text-white fw-bold fs-4">
                                         <Card.Img src={booking?.mybookings?.img} alt="Card image" />
                                         <Card.ImgOverlay>
-                                            <Card.Title className="mt-5">{booking?.mybookings?.name}</Card.Title>
+                                            <Card.Title className="pt-0">{booking?.mybookings?.name}</Card.Title>
                                             <p>By {booking?.name}</p>
                                             <span>{booking?.road}</span>
                                             <span className="ms-3">{booking?.city}</span>
