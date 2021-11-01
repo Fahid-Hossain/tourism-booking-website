@@ -40,10 +40,10 @@ const ManageBooking = () => {
         <h1 className="my-5 text-secondary">ALL OF MY BOOKINGS </h1>
       {
           mybooking?.length === 0 ? <h4 className="text-muted">Did't find any bookings Yet !   <Spinner animation="grow" variant="secondary" /></h4>
-           : <Row xs={1} md={3} className="g-4">
+           : <Row xs={1} md={3} className="g-0">
           {
               mybooking.map(booking => <Col key={booking._id}>
-                  <Card className="bg-dark text-white">
+                  <Card border="light" className="bg-dark text-white">
                       <Card.Img src={booking?.mybookings?.img} alt="Card image" />
                       <Card.ImgOverlay>
                           <Card.Title className="mt-5 pt-5 fw-bold">{booking?.mybookings?.name}</Card.Title>

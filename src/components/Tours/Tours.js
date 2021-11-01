@@ -19,7 +19,7 @@ const Tours = () => {
       {
           tours.length === 0 ? <div className="spinner-border text-danger" role="status">
           <span className="visually-hidden">Loading...</span>
-        </div> : <Row xs={1} md={3} className="g-4">
+        </div> : <Row xs={1} md={2} className="g-0">
           {
               tours.map(tour => <Tour tour={tour} key={tour._id}></Tour>)
           }

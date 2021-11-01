@@ -64,17 +64,19 @@ const MyBooking = () => {
             <h1 className="text-secondary">TOTAL BOOKINGS ({bookings.length})</h1>
             {
                 bookings.length === 0 ? <Spinner animation="border" variant="secondary" />
-                    : <Row xs={1} md={3} className="g-4">
+                    : <Row xs={1} md={3} className="g-0">
                         {
                             bookings.map(booking => <div key={booking._id}>
                                 <Col>
                                     <Card className="bg-white text-white fw-bold fs-4">
-                                        <Card.Img src={booking.mybookings.img} alt="Card image" />
+                                        <Card.Img src={booking?.mybookings?.img} alt="Card image" />
                                         <Card.ImgOverlay>
-                                            <Card.Title className="mt-5 pt-5">{booking.mybookings.name}</Card.Title>
-                                            <p>By {booking.name}</p>
+                                            <Card.Title className="mt-5">{booking?.mybookings?.name}</Card.Title>
+                                            <p>By {booking?.name}</p>
+                                            <span>{booking?.road}</span>
+                                            <span className="ms-3">{booking?.city}</span>
                                             <Card.Text>
-                                                ${booking.mybookings.price}
+                                                ${booking?.mybookings?.price}
                                             </Card.Text>
                                             <button onClick={() => handleDelete(booking._id)} className="btn btn-danger">Cancel Booking</button>
                                             <button onClick={()=>handleUpdate(booking._id)} className="btn btn-primary ms-2">Approve</button>
