@@ -9,7 +9,7 @@ const Tour = (props) => {
 
              <Col>
                 <Card border="light">
-                    <Card.Img className="mx-auto p-2" variant="top" src={img} style={{ width: "490px" }} />
+                    <Card.Img className="mx-auto p-2 img-fluid" variant="top" src={img} style={{ width: "30.625rem" }} />
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
                         <p className="text-muted fs-4 fw-bold">${price}</p>
