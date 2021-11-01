@@ -27,7 +27,9 @@ const Booking = () => {
     const onSubmit = data =>{
         // console.log(data);
         data.mybookings =tour;
-        // data.status = "Pending";
+        data.status = {
+            status:"pending"
+        };
 
         fetch("http://localhost:5000/mybooking",{
             method: "POST",

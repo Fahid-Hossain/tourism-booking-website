@@ -37,7 +37,7 @@ const ManageBooking = () => {
     }
     return (
         <div>
-        <h1 className="my-5 text-secondary">ALL OF MY BOOKINGS ({bookings.length}) </h1>
+        <h1 className="my-5 text-secondary">ALL OF MY BOOKINGS </h1>
       {
           bookings.length === 0 ? <h4 className="text-muted">Did't find any bookings Yet !   <Spinner animation="grow" variant="secondary" /></h4> : <Row xs={1} md={3} className="g-4">
           {
@@ -50,6 +50,7 @@ const ManageBooking = () => {
                          ${booking?.mybookings?.price}
                           </p>
                           <button onClick={()=>handleDelete(booking._id)} className="btn btn-warning text-danger fw-bold">Cancel Booking</button>
+                          <button className="btn btn-warning text-primary fw-bold ms-2">{booking.status.status}</button>
                       </Card.ImgOverlay>
                   </Card>
               </Col>

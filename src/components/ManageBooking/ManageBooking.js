@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Card, Row, Col, Spinner } from 'react-bootstrap';
 
 const MyBooking = () => {
     const [bookings, setBookings] = useState([])
+    // const [isDisabled, setDisabled] = useState(false);
+
     useEffect(() => {
         fetch("http://localhost:5000/mybooking")
             .then(res => res.json())
@@ -33,11 +35,34 @@ const MyBooking = () => {
         }
     }
 
+    //
+    const updated = {
+        status: 'Approved'
+    };
+
+
+    //handle update bookings
+    const handleUpdate = (id) => {
+        const url = `http://localhost:5000/mybooking/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(updated)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                // setDisabled(true);
+            })
+    }
+
     return (
         <div className="mt-3">
             <h1 className="text-secondary">TOTAL BOOKINGS ({bookings.length})</h1>
             {
-                bookings.length === 0 ? <Spinner animation="border" variant="secondary"/>
+                bookings.length === 0 ? <Spinner animation="border" variant="secondary" />
                     : <Row xs={1} md={3} className="g-4">
                         {
                             bookings.map(booking => <div key={booking._id}>
@@ -51,7 +76,7 @@ const MyBooking = () => {
                                                 ${booking.mybookings.price}
                                             </Card.Text>
                                             <button onClick={() => handleDelete(booking._id)} className="btn btn-danger">Cancel Booking</button>
-                                            {/* <button className="btn btn-primary ms-2 ">{booking.status}</button> */}
+                                            <button onClick={() => handleUpdate(booking._id)} className="btn btn-primary ms-2 " >Approve</button>
                                         </Card.ImgOverlay>
                                     </Card>
                                 </Col>
