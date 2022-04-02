@@ -8,7 +8,7 @@ const Header = () => {
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                    <Navbar.Brand><h5 className="text-bold text-warning fs-4 ms-5">Travel Rhythm</h5></Navbar.Brand>
+                    <Navbar.Brand><h5 className="text-bold text-warning fs-4 ms-4">Travel Rhythm</h5></Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mx-auto">
@@ -38,8 +38,8 @@ const Header = () => {
                            
                            
                          {
-                             !user.email ? <Link className="mx-2 text-decoration-none text-white nav-link" to="/signin">
-                             <button className="btn btn-secondary me-5">Sign In</button>
+                             !user.email ? <Link className="mx-1 text-decoration-none text-white nav-link" to="/signin">
+                             <button className="btn btn-secondary me-0">Sign In</button>
                          </Link> : <Link className="mx-2 text-decoration-none text-white nav-link" to="/signin">
                              <button onClick={logOut} className="btn btn-secondary me-5">Log Out</button>
                          </Link> 

@@ -11,10 +11,10 @@ const Banner = () => {
                         src="https://image.freepik.com/free-vector/travel-tourism-illustration-with-resort-sightseeing-elements_1284-30189.jpg"
                         alt="First slide"
                     />
-                    <Carousel.Caption className="text-white fw-bold">
+                    {/* <Carousel.Caption className="text-white fw-bold">
                     <h3>Explore Our Travel Agency</h3>
                         <p>Best Trip Experience</p>
-                    </Carousel.Caption>
+                    </Carousel.Caption> */}
                 </Carousel.Item>
                 <Carousel.Item interval={500}>
                     <img style={{width:"100%"}}
@@ -34,8 +34,8 @@ const Banner = () => {
                         alt="Third slide"
                     />
                     <Carousel.Caption>
-                        <h3>Explore Our Travel Agency</h3>
-                        <p>Best Trip Experience</p>
+                        <p className="fs-6 fw-bold">Explore Our Travel Agency</p>
+                        <span className="fs-6">Best Trip Experience</span>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>

@@ -14,20 +14,21 @@ const Contact = () => {
                             <div className="form-group">
                                 <input type="text" name="txtName" className="form-control" placeholder="Your Name *" />
                             </div>
-                            <div className="form-group">
+                            <div className="form-group my-2">
                                 <input type="text" name="txtEmail" className="form-control" placeholder="Your Email *" />
                             </div>
-                            <div className="form-group">
-                                <input type="text" name="txtPhone" className="form-control" placeholder="Your Phone Number *"  />
+                            <div className="form-group mb-2">
+                                <input type="text" name="txtPhone" className="form-control" placeholder="Your Phone Number *" />
                             </div>
-                            <div className="form-group">
-                                <input type="submit" name="btnSubmit" className="btnContact" value="Send Message" />
-                            </div>
+
                         </div>
                         <div className="col-md-6">
                             <div className="form-group">
-                                <textarea name="txtMsg" className="form-control" placeholder="Your Message *" style={{width:"100%",height:"150px"}}></textarea>
+                                <textarea name="txtMsg" className="form-control" placeholder="Your Message *" style={{ width: "100%", height: "8.2rem" }}></textarea>
                             </div>
+                        </div>
+                        <div className="form-group">
+                            <input type="submit" name="btnSubmit" className="btnContact mt-2" value="Send Message" />
                         </div>
                     </div>
                 </form>

@@ -8,7 +8,7 @@ const Footer = () => {
                     <div className="row">
                         <div className="col-lg-3 mb-3">
                             <a className="d-inline-flex align-items-center mb-2 link-dark text-decoration-none" href="/" aria-label="Bootstrap">
-                                <span className="fs-5">Travel-Rhythm</span>
+                                <span className="fs-4 fw-bold">Travel-Rhythm</span>
                             </a>
                             <ul className="list-unstyled small text-muted">
                                 <li className="mb-2">Designed and built with all the love in the world by the <a href="/docs/5.1/about/team/">TravelRhythm team</a> with the help of <a href="https://github.com/twbs/bootstrap/graphs/contributors">our contributors</a>.</li>
@@ -16,27 +16,27 @@ const Footer = () => {
                                 <li className="mb-2">Currently v5.1.3.</li>
                             </ul>
                         </div>
-                        <div className="col-6 col-lg-2 offset-lg-1 mb-3">
+                        <div className="col-12 col-md-6 col-lg-2 offset-lg-1 mb-3">
                             <h5>Blog Post</h5>
                             <p className="text-muted">The Ultimate Packing List For Female Travelers</p>
                             <p className="text-muted">How These 5 People Found The Path to Their Dream Trip</p>
                         </div>
-                        <div className="col-6 col-lg-2 mb-3">
+                        <div className="col-12 col-md-6 col-lg-2 mb-3">
                             <h5>Book Now</h5>
                             <p className="text-muted">Flight</p>
                             <p className="text-muted">Hotels</p>
                             <p className="text-muted">Tour</p>
                             <p className="text-muted">Car Rent</p>
                         </div>
-                        <div className="col-6 col-lg-2 mb-3">
+                        <div className="col-12 col-md-6 col-lg-2 mb-3">
                             <h5>Top Deals</h5>
                             <p className="text-muted">Edina Hoted</p>
                             <p className="text-muted">Quality Sitles</p>
                             <p className="text-muted">Hotel Epikk</p>
                             <p className="text-muted">Do Vinci Villa</p>
                         </div>
-                        <div className="col-6 col-lg-2 mb-3">
-                            <h5>Contact Information</h5>
+                        <div className="col-12 col-md-6 col-lg-2 mb-3">
+                            <h5>Contact Info</h5>
                             <p className="text-muted">
                                 291 South 21th Street,
                             </p>
